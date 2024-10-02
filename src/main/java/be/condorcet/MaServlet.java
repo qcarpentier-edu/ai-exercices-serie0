@@ -30,7 +30,7 @@ public class MaServlet extends HttpServlet {
     	connectionString = context.getInitParameter("connection-string");
     	if (connectionString == null)
     		throw new ServletException("La chaîne de connexion n'est pas accessible.");
-    };
+    }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
