@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+  <display-name>serie_0</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+	  <servlet-name>MaServlet</servlet-name>
+	  <servlet-class>be.condorcet.MaServlet</servlet-class>
+	  <init-param>
+	  	<description>Connection à l'API</description>
+	  	<param-name>api-key</param-name>
+	  	<param-value>ABC12345*</param-value>
+	  </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MaServlet</servlet-name>
+    <url-pattern>/MaServlet</url-pattern>
+    <url-pattern>/PremiereServlet</url-pattern>
+  </servlet-mapping>
+</web-app>

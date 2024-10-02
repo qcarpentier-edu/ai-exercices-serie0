@@ -8,13 +8,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/MaServlet")
+//@WebServlet("/MaServlet")
 public class MaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String apiKey;
        
     public MaServlet() {
         super();
     }
+    
+    @Override
+    public void init() throws ServletException {
+    	super.init();
+    	
+    	apiKey = getInitParameter("api-key");
+    	if (apiKey == null)
+    		throw new ServletException("L'API Key n'est pas accessible");
+    };
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
@@ -30,7 +40,9 @@ public class MaServlet extends HttpServlet {
 	    else
 	        out.write("cher inconnu.");
 	    
-	    out.write("</p></body></html>");
+	    out.write("/<p>");
+	    out.write("<p>L'API Key est " + apiKey + "</p>");
+	    out.write("</body></html>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
